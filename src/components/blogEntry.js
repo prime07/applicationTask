@@ -12,24 +12,27 @@ class BlogEntry extends React.Component {
   static contextType = BlogDataContext;
 
   componentDidMount() {
-    console.log(this.props);
     fetch(
       `http://jsonplaceholder.typicode.com/posts/${this.props.match.params.blogEntryID}`
     )
       .then(res => res.json())
-      .then(
-        json => this.setState({ blogEntry: json }),
-        () =>
-          fetch(
-            `http://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
-          )
-            .then(res => res.json())
-            .then(json =>
-              this.context.updateUser({
-                name: json.name,
-                website: json.website
-              })
+      .then(json =>
+        this.setState(
+          { blogEntry: json },
+          function() {
+            fetch(
+              `http://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
             )
+              .then(res => res.json())
+
+              .then(json =>
+                this.context.updateUser({
+                  name: json.name,
+                  website: json.website
+                })
+              );
+          }.bind(this)
+        )
       );
   }
 

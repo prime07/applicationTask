@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Content from "./components/content";
 import Header from "./components/header";
+import BlogContext from "./components/blogContext";
 import { BlogDataContext } from "./data-context";
 
 class App extends Component {
@@ -17,10 +18,11 @@ class App extends Component {
   }
 
   render() {
+    const { data, user } = this.state;
     return (
       <BlogDataContext.Provider
         value={{
-          state: this.state.data,
+          state: data,
           updateUser: user => {
             this.setState({
               user: { name: user.name, website: user.website }
@@ -28,16 +30,21 @@ class App extends Component {
           }
         }}
       >
-        <div className="App">
-          <Header></Header>
+        <React.Fragment>
+          <Header />
           <div className="container">
             <div className="content">
-              <Content blogEntries={this.state.data}></Content>
+              <Content blogEntries={data}></Content>
             </div>
-            <div className="context">{this.state.user.name}</div>
-            <div className="footer">Footer</div>
+            <div className="context">
+              <BlogContext author={user.name} website={user.website} />
+            </div>
+            <div className="footer">
+              <p>© 2020 by Marius Rhein</p>
+              <p>marius.rhein@outlook.com</p>
+            </div>
           </div>
-        </div>
+        </React.Fragment>
       </BlogDataContext.Provider>
     );
   }

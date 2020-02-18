@@ -2,11 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBlog } from "@fortawesome/free-solid-svg-icons";
+import { faBlog, faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Header(props) {
   return (
-    <div className="header">
+    <div className="header" id="blogHeader">
       <NavLink to="/">
         <FontAwesomeIcon icon={faBlog} />
       </NavLink>
