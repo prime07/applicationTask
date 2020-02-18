@@ -1,63 +1,61 @@
 body {
-    margin: 0px;
-    background-color: #f4f4f4;
-    font-family: 'Poppins', sans-serif;
-    color: #373737;
-    background-size: cover;
-    min-height: 100%; 
+  margin: 0px;
+  background-color: #f4f4f4;
+  font-family: "Poppins", sans-serif;
+  color: #373737;
+  background-size: cover;
+  min-height: 100%;
 }
 
-.content { 
-    background-color: #dcd0c0;
-    grid-area: content;
+.content {
+  background-color: #dcd0c0;
+  grid-area: content;
 }
 
 .context {
-    background-color: #dcd0c0;
-    grid-area: context;
+  background-color: #dcd0c0;
+  grid-area: context;
 }
 
 .footer {
-    background-color: #dcd0c0;
-    border-top: solid 1px rgb(148, 148, 148);;
-    color: grey;
-    font-size: smaller;
-    text-align: center;
-    grid-area: footer;
+  background-color: #dcd0c0;
+  border-top: solid 1px rgb(148, 148, 148);
+  color: grey;
+  font-size: smaller;
+  text-align: center;
+  grid-area: footer;
 }
-
 
 .container {
-    max-width: 1280px;
-    margin: 0 auto !important;
+  max-width: 1280px;
+  margin: 0 auto !important;
 
-    -webkit-box-shadow: 0px -15px 23px -3px rgba(0,0,0,0.34);
-    -moz-box-shadow: 0px 0px 23px -3px rgba(0,0,0,0.34);
-    box-shadow: 0px 20px 23px -3px rgba(0,0,0,0.34);
+  -webkit-box-shadow: 0px -15px 23px -3px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 0px 0px 23px -3px rgba(0, 0, 0, 0.34);
+  box-shadow: 0px 20px 23px -3px rgba(0, 0, 0, 0.34);
 
+  display: grid;
+  grid-column-gap: 5px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto, 20px;
+  grid-template-areas:
+    "content content context"
+    "footer footer footer";
+}
+
+@media only screen and (max-width: 639px) {
+  .container {
     display: grid;
-    grid-column-gap: 5px;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: auto, 20px;
-    grid-template-areas: 
-      "content content context"
-      "footer footer footer";
+    grid-template-columns: auto;
+    grid-template-areas:
+      "content"
+      "context"
+      "footer";
+  }
 }
-
-@media only screen and (max-width: 639px){
-    .container {
-        display: grid;
-        grid-template-columns: auto;
-        grid-template-areas:       
-          "content"
-          "context"
-          "footer";
-    }
-}
-
 
 .navLink {
-    color: #373737;
-    text-decoration: none;
-    cursor: pointer;
+  color: #373737;
+  text-decoration: none;
+  cursor: pointer;
 }
