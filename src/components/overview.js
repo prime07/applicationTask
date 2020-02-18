@@ -1,15 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./overview.css";
+import RandomImage from "./randomImage";
 
 function Overview(props) {
   return (
-    <React.Fragment>
+    <div className="entryContainer">
       {props.blogEntries.map(blogEntry => (
-        <Link key={blogEntry.id} to={`/blogEntry/${blogEntry.id}`}>
-          <div>{blogEntry.title}</div>
-        </Link>
+        <div>
+          <RandomImage></RandomImage>
+          <NavLink
+            class="navLink"
+            key={blogEntry.id}
+            to={`/blogEntry/${blogEntry.id}`}
+          >
+            <div class="overviewEntry">{blogEntry.title}</div>
+          </NavLink>
+        </div>
       ))}
-    </React.Fragment>
+    </div>
   );
 }
 

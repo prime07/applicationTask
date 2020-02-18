@@ -1,6 +1,7 @@
 import React from "react";
 import "./blogEntry.css";
 import { BlogDataContext } from "../data-context";
+import RandomImage from "./randomImage";
 
 class BlogEntry extends React.Component {
   constructor() {
@@ -34,8 +35,9 @@ class BlogEntry extends React.Component {
 
   render() {
     return (
-      <div className="BlogEntry">
+      <div className="blogEntry">
         <div>
+          <RandomImage width={796} height={300}></RandomImage>
           <h2>{this.state.blogEntry.title}</h2>
           <p>{this.state.blogEntry.body}</p>
         </div>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Content from "./components/content";
+import Header from "./components/header";
 import { BlogDataContext } from "./data-context";
 
 class App extends Component {
@@ -28,8 +29,8 @@ class App extends Component {
         }}
       >
         <div className="App">
+          <Header></Header>
           <div className="container">
-            <div className="header">Header</div>
             <div className="content">
               <Content blogEntries={this.state.data}></Content>
             </div>
