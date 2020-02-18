@@ -6,7 +6,7 @@ import { BlogDataContext } from "./data-context";
 class App extends Component {
   constructor() {
     super();
-    this.state = { data: [] };
+    this.state = { data: [], user: { name: "", website: "" } };
   }
 
   componentDidMount() {
@@ -17,14 +17,23 @@ class App extends Component {
 
   render() {
     return (
-      <BlogDataContext.Provider value={this.state.data}>
+      <BlogDataContext.Provider
+        value={{
+          state: this.state.data,
+          updateUser: user => {
+            this.setState({
+              user: { name: user.name, website: user.website }
+            });
+          }
+        }}
+      >
         <div className="App">
           <div className="container">
             <div className="header">Header</div>
             <div className="content">
               <Content blogEntries={this.state.data}></Content>
             </div>
-            <div className="context">Context</div>
+            <div className="context">{this.state.user.name}</div>
             <div className="footer">Footer</div>
           </div>
         </div>

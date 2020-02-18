@@ -3,16 +3,41 @@ import "./blogEntry.css";
 import { BlogDataContext } from "../data-context";
 
 class BlogEntry extends React.Component {
+  constructor() {
+    super();
+    this.state = { blogEntry: {} };
+  }
+
   static contextType = BlogDataContext;
-  render() {
-    const blogEntry = this.context.find(
-      blogEntry => blogEntry.id == this.props.match.params.blogEntryID
+
+  componentDidMount() {
+    this.setState(
+      {
+        blogEntry: this.context.state.find(
+          blogEntry => blogEntry.id == this.props.match.params.blogEntryID
+        )
+      },
+      () =>
+        fetch(
+          `http://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
+        )
+          .then(res => res.json())
+          .then(json =>
+            this.context.updateUser({ name: json.name, website: json.website })
+          )
     );
+  }
+
+  componentWillUnmount() {
+    this.context.updateUser({ name: "", website: "" });
+  }
+
+  render() {
     return (
       <div className="BlogEntry">
         <div>
-          <h2>{blogEntry.title}</h2>
-          <p>{blogEntry.body}</p>
+          <h2>{this.state.blogEntry.title}</h2>
+          <p>{this.state.blogEntry.body}</p>
         </div>
       </div>
     );
