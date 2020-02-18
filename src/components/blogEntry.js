@@ -12,21 +12,25 @@ class BlogEntry extends React.Component {
   static contextType = BlogDataContext;
 
   componentDidMount() {
-    this.setState(
-      {
-        blogEntry: this.context.state.find(
-          blogEntry => blogEntry.id == this.props.match.params.blogEntryID
-        )
-      },
-      () =>
-        fetch(
-          `http://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
-        )
-          .then(res => res.json())
-          .then(json =>
-            this.context.updateUser({ name: json.name, website: json.website })
+    console.log(this.props);
+    fetch(
+      `http://jsonplaceholder.typicode.com/posts/${this.props.match.params.blogEntryID}`
+    )
+      .then(res => res.json())
+      .then(
+        json => this.setState({ blogEntry: json }),
+        () =>
+          fetch(
+            `http://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
           )
-    );
+            .then(res => res.json())
+            .then(json =>
+              this.context.updateUser({
+                name: json.name,
+                website: json.website
+              })
+            )
+      );
   }
 
   componentWillUnmount() {
@@ -38,8 +42,8 @@ class BlogEntry extends React.Component {
       <div className="blogEntry">
         <div>
           <RandomImage width={796} height={300}></RandomImage>
-          <h2>{this.state.blogEntry.title}</h2>
-          <p>{this.state.blogEntry.body}</p>
+          <h2>{this.state.blogEntry.title || ""}</h2>
+          <p>{this.state.blogEntry.body || ""}</p>
         </div>
       </div>
     );

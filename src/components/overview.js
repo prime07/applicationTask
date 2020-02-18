@@ -7,14 +7,10 @@ function Overview(props) {
   return (
     <div className="entryContainer">
       {props.blogEntries.map(blogEntry => (
-        <div>
+        <div key={blogEntry.id}>
           <RandomImage></RandomImage>
-          <NavLink
-            class="navLink"
-            key={blogEntry.id}
-            to={`/blogEntry/${blogEntry.id}`}
-          >
-            <div class="overviewEntry">{blogEntry.title}</div>
+          <NavLink className="navLink" to={`/blogEntry/${blogEntry.id}`}>
+            <div className="overviewEntry">{blogEntry.title}</div>
           </NavLink>
         </div>
       ))}
