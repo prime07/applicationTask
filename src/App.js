@@ -1,17 +1,35 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
+import BlogEntry from "./components/blogEntry";
 
-function App() {
-  return (
-    <div className="App">
-      <div class="container">
-        <div class="header">Header</div>
-        <div class="context">context</div>
-        <div class="content">Content</div>
-        <div class="footer">Footer</div>
+class App extends Component {
+  constructor() {
+    super();
+    this.state = { data: [] };
+  }
+
+  componentDidMount() {
+    fetch("http://jsonplaceholder.typicode.com/posts/")
+      .then(res => res.json())
+      .then(json => this.setState({ data: json }));
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div className="container">
+          <div className="header">Header</div>
+          <div className="content">
+            {this.state.data.map(blogEntry => (
+              <BlogEntry title={blogEntry.title}></BlogEntry>
+            ))}
+          </div>
+          <div className="context">Content</div>
+          <div className="footer">Footer</div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
