@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
-import BlogEntry from "./components/blogEntry";
+import Content from "./components/content";
+import { BlogDataContext } from "./data-context";
 
 class App extends Component {
   constructor() {
@@ -16,18 +17,18 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="container">
-          <div className="header">Header</div>
-          <div className="content">
-            {this.state.data.map(blogEntry => (
-              <BlogEntry title={blogEntry.title}></BlogEntry>
-            ))}
+      <BlogDataContext.Provider value={this.state.data}>
+        <div className="App">
+          <div className="container">
+            <div className="header">Header</div>
+            <div className="content">
+              <Content blogEntries={this.state.data}></Content>
+            </div>
+            <div className="context">Context</div>
+            <div className="footer">Footer</div>
           </div>
-          <div className="context">Content</div>
-          <div className="footer">Footer</div>
         </div>
-      </div>
+      </BlogDataContext.Provider>
     );
   }
 }
