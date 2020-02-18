@@ -59,8 +59,20 @@ function Header(props) {
           <a href="#">Link 3</a>
         </div>
       </div>
+      <a className="icon" onClick={clickMenuItem}>
+        <FontAwesomeIcon icon={faBars} />
+      </a>
     </div>
   );
+}
+
+function clickMenuItem() {
+  var x = document.getElementById("blogHeader");
+  if (x.className === "header") {
+    x.className += " responsive";
+  } else {
+    x.className = "header";
+  }
 }
 
 export default Header;
