@@ -13,7 +13,7 @@ class BlogEntry extends React.Component {
 
   componentDidMount() {
     fetch(
-      `http://jsonplaceholder.typicode.com/posts/${this.props.match.params.blogEntryID}`
+      `https://jsonplaceholder.typicode.com/posts/${this.props.match.params.blogEntryID}`
     )
       .then(res => res.json())
       .then(json =>
@@ -21,7 +21,7 @@ class BlogEntry extends React.Component {
           { blogEntry: json },
           function() {
             fetch(
-              `http://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
+              `https://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
             )
               .then(res => res.json())
 

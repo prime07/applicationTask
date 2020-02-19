@@ -12,7 +12,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("http://jsonplaceholder.typicode.com/posts/")
+    fetch("https://jsonplaceholder.typicode.com/posts/")
       .then(res => res.json())
       .then(json => this.setState({ data: json }));
   }
