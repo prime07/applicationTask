@@ -2,9 +2,9 @@ import React from "react";
 import { BlogDataContext } from "../data-context";
 import RandomImage from "./randomImage";
 import Axios from "axios";
-import "../css/blogEntry.css";
+import "../css/blogPost.css";
 
-class BlogEntry extends React.Component {
+class BlogPost extends React.Component {
   constructor() {
     super();
     this.state = { blogEntry: {} };
@@ -51,4 +51,4 @@ class BlogEntry extends React.Component {
   }
 }
 
-export default BlogEntry;
+export default BlogPost;

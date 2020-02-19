@@ -1,7 +1,7 @@
 import React from "react";
-import "../css/blogContext.css";
+import "../css/blogPostContext.css";
 
-function BlogContext(props) {
+function BlogPostContext(props) {
   return props.author && props.website ? (
     <div className="blogContext">
       <h2>Author</h2>
@@ -25,4 +25,4 @@ function BlogContext(props) {
   );
 }
 
-export default BlogContext;
+export default BlogPostContext;

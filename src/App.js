@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import Axios from "axios";
-import Content from "./components/content";
+import BlogContent from "./components/blogContent";
 import Header from "./components/header";
-import BlogContext from "./components/blogContext";
+import BlogPostContext from "./components/blogPostContext";
 import { BlogDataContext } from "./data-context";
 import "./css/App.css";
 
@@ -35,10 +35,10 @@ class App extends Component {
           <Header />
           <div className="container">
             <div className="content">
-              <Content blogEntries={data}></Content>
+              <BlogContent blogEntries={data}></BlogContent>
             </div>
             <div className="context">
-              <BlogContext author={user.name} website={user.website} />
+              <BlogPostContext author={user.name} website={user.website} />
             </div>
             <div className="footer">
               <p>© 2020 by Marius Rhein</p>

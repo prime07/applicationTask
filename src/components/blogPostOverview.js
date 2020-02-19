@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import RandomImage from "./randomImage";
-import "../css/overview.css";
+import "../css/blogPostOverview.css";
 
-function Overview(props) {
+function BlogPostOverview(props) {
   return (
     <div className="entryContainer">
       {props.blogEntries.map(blogEntry => (
@@ -18,4 +18,4 @@ function Overview(props) {
   );
 }
 
-export default Overview;
+export default BlogPostOverview;
