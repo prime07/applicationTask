@@ -1,5 +1,8 @@
 import React from "react";
 
+// This component creates a random image url and uses it as background image for
+// the div
+// Optionally, a height and width can be specified as props
 function RandomImage(props) {
   const seed = Math.random() * 10;
   const image =

@@ -3,6 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import BlogPostOverview from "./blogPostOverview";
 import BlogPost from "./blogPost";
 
+// This component switches between the two possible content types: the blogpost
+// overview and a single blogpost
 function BlogContent(props) {
   return (
     <Switch>

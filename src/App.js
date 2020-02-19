@@ -12,6 +12,7 @@ class App extends Component {
     this.state = { data: [], user: { name: "", website: "" } };
   }
 
+  // If the App is mounted, all blogposts will be fetched and stored in state
   componentDidMount() {
     Axios.get("https://jsonplaceholder.typicode.com/posts/").then(res =>
       this.setState({ data: res.data })
@@ -21,6 +22,10 @@ class App extends Component {
   render() {
     const { data, user } = this.state;
     return (
+      // Render all components (Header, content, context and footer), wrapped in
+      // a global context
+      // The context is necessary to make the information about the blogpost
+      // author available from the content component to the context component
       <BlogDataContext.Provider
         value={{
           state: data,

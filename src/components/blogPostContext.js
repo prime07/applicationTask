@@ -1,6 +1,7 @@
 import React from "react";
 import "../css/blogPostContext.css";
 
+// This component receives the blogpost author data as props and renders them
 function BlogPostContext(props) {
   return props.author && props.website ? (
     <div className="blogContext">

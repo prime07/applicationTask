@@ -12,6 +12,10 @@ class BlogPost extends React.Component {
 
   static contextType = BlogDataContext;
 
+  // After being mounted, this component fetches data about a single blogpost
+  // with the blogpost id out of the the url params
+  // As soon as the data about the blogpost is received and stored in state, the
+  // data about the author is fetched and stored in the global context
   componentDidMount() {
     Axios.get(
       `https://jsonplaceholder.typicode.com/posts/${this.props.match.params.blogEntryID}`
@@ -34,10 +38,13 @@ class BlogPost extends React.Component {
     );
   }
 
+  // To clear the context component, the blogpost author data will be cleared in
+  // the global context when the user leaves the detailed blogpost page
   componentWillUnmount() {
     this.context.updateUser({ name: "", website: "" });
   }
 
+  // The component displays the blogpost data along with a random image
   render() {
     return (
       <div className="blogEntry">

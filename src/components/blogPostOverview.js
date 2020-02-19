@@ -3,6 +3,8 @@ import { NavLink } from "react-router-dom";
 import RandomImage from "./randomImage";
 import "../css/blogPostOverview.css";
 
+// This component receives all blogposts in an array and displays their titles
+// them along with a random image
 function BlogPostOverview(props) {
   return (
     <div className="entryContainer">
