@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import "./App.css";
+import Axios from "axios";
 import Content from "./components/content";
 import Header from "./components/header";
 import BlogContext from "./components/blogContext";
 import { BlogDataContext } from "./data-context";
+import "./App.css";
 
 class App extends Component {
   constructor() {
@@ -12,9 +13,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch("https://jsonplaceholder.typicode.com/posts/")
-      .then(res => res.json())
-      .then(json => this.setState({ data: json }));
+    Axios.get("https://jsonplaceholder.typicode.com/posts/").then(res =>
+      this.setState({ data: res.data })
+    );
   }
 
   render() {

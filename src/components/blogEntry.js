@@ -2,6 +2,7 @@ import React from "react";
 import "./blogEntry.css";
 import { BlogDataContext } from "../data-context";
 import RandomImage from "./randomImage";
+import Axios from "axios";
 
 class BlogEntry extends React.Component {
   constructor() {
@@ -12,28 +13,25 @@ class BlogEntry extends React.Component {
   static contextType = BlogDataContext;
 
   componentDidMount() {
-    fetch(
+    Axios.get(
       `https://jsonplaceholder.typicode.com/posts/${this.props.match.params.blogEntryID}`
-    )
-      .then(res => res.json())
-      .then(json =>
-        this.setState(
-          { blogEntry: json },
-          function() {
-            fetch(
-              `https://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
-            )
-              .then(res => res.json())
-
-              .then(json =>
-                this.context.updateUser({
-                  name: json.name,
-                  website: json.website
-                })
-              );
-          }.bind(this)
-        )
-      );
+    ).then(res =>
+      this.setState(
+        { blogEntry: res.data },
+        function() {
+          Axios.get(
+            `https://jsonplaceholder.typicode.com/users/${this.state.blogEntry.userId}`
+          )
+            .then(res => res.data)
+            .then(json =>
+              this.context.updateUser({
+                name: json.name,
+                website: json.website
+              })
+            );
+        }.bind(this)
+      )
+    );
   }
 
   componentWillUnmount() {
