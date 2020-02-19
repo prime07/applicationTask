@@ -58,11 +58,16 @@
 
 .dropdown-content a:hover {
   background-color: #ddd;
-  color: #222831;
+  color: #373737;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #373737;
+  color: #f4f4f4;
 }
 
 .header .icon {
