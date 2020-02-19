@@ -4,7 +4,7 @@ import Content from "./components/content";
 import Header from "./components/header";
 import BlogContext from "./components/blogContext";
 import { BlogDataContext } from "./data-context";
-import "./App.css";
+import "./css/App.css";
 
 class App extends Component {
   constructor() {

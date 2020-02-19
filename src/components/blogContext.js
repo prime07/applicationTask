@@ -1,5 +1,5 @@
 import React from "react";
-import "./blogContext.css";
+import "../css/blogContext.css";
 
 function BlogContext(props) {
   return props.author && props.website ? (

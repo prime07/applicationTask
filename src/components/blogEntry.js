@@ -1,8 +1,8 @@
 import React from "react";
-import "./blogEntry.css";
 import { BlogDataContext } from "../data-context";
 import RandomImage from "./randomImage";
 import Axios from "axios";
+import "../css/blogEntry.css";
 
 class BlogEntry extends React.Component {
   constructor() {

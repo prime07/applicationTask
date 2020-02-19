@@ -1,5 +1,4 @@
 import React from "react";
-import "./overview.css";
 
 function RandomImage(props) {
   const seed = Math.random() * 10;

@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBlog, faBars } from "@fortawesome/free-solid-svg-icons";
+import "../css/header.css";
 
 function Header(props) {
   return (
