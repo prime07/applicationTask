@@ -38,7 +38,7 @@
 
 .dropdown-content {
   display: none;
-  position: absolute;
+  position: fixed;
   background-color: #373737;
   color: #f4f4f4;
   min-width: 160px;
@@ -80,9 +80,9 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 570px) {
   .header.responsive {
-    position: relative;
+    position: fixed;
   }
   .header.responsive .icon {
     position: absolute;
