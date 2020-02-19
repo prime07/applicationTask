@@ -11,8 +11,10 @@
 }
 
 .header {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto !important;
+  background-color: #f4f4f4;
 }
 
 .header a {
